@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('distance', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->integer('km');
             $table->integer('price');
             $table->timestamps();
         });
