@@ -40,7 +40,11 @@
                         <ul class="featured__item__pic__hover">
                             {{-- <li><a href="#"><i class="fa fa-heart"></i></a></li> --}}
                             <li><a href="{{ route('product', ['id'=>$item->id]) }}"><i class="fa fa-eye"></i></a></li>
+                            @auth
                             <li><a href="{{ route('home.addcart', ['id_user'=>Auth::User()->id,'id_product'=>$item->id]) }}"><i class="fa fa-shopping-cart"></i></a></li>
+                            @else
+                            <li><a href="{{ route('login') }}"><i class="fa fa-shopping-cart"></i></a></li>
+                            @endauth
                         </ul>
                     </div>
                     <div class="featured__item__text">

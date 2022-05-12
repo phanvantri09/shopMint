@@ -31,6 +31,7 @@ Route::prefix('/')->group(function () {
         Route::get('/product/{id}', 'product')->name('product');
     });
     Route::controller(CartController::class)->group(function () {
+        Route::get('/checkout', 'checkout')->name('checkout');
         Route::get('/cart', 'mycart')->name('home.mycart');
         Route::get('/addcart/{id_user}/{id_product}', 'add')->name('home.addcart');
         Route::get('/updatecart', 'update')->name('home.updatecart');

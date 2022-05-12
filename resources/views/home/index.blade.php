@@ -189,8 +189,9 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            {{-- <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li> --}}
-                            <li><a href="{{ route('home.mycart') }}"><i class="fa fa-shopping-bag"></i> <span>{{$amountCart}}</span></a></li>
+
+                            <li><a href="{{ route('checkout') }}"><i class="fa fa-shopping-bag"></i></a></li>
+                            <li><a href="{{ route('home.mycart') }}"><i class="fa fa-shopping-cart"></i> <span>{{$amountCart}}</span></a></li>
                         </ul>
                         <div class="header__cart__price">Item: <span>${{$priceCart}}</span></div>
                     </div>

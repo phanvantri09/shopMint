@@ -7,8 +7,16 @@ use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Bill;
+
 class CartController extends Controller
 {
+    public function checkout(){
+         $id_user= Auth::User()->id;
+         $products = Product::all();
+         $data1 = Cart::where('id_user','=',$id_user)->where('status','=',1)->get();
+         $data2 = Cart::where('id_user','=',$id_user)->where('status','=',2)->get();
+         return view('home.layout.checkout', compact('data1','data2','products'));
+    }
     public function empty($id_user, $id_product){
         $tets =Cart::where('id_user','=',$id_user)->where('id_product','=',$id_product)->get();
         if(isset($tets[0]) == true){
@@ -54,6 +62,12 @@ class CartController extends Controller
     public function update(){
         $this->add($id_user, $id_product);
         return back()->with('success',"Thành công");
+    }
+    public function delete($id){
+        $data = new Cart;
+        $data = Cart::find($id);
+        $data->delete();
+        return back()->with('success',"Xóa Sản Phẩm Thành Công");
     }
     public function mycart(){
         $amount = 0;
