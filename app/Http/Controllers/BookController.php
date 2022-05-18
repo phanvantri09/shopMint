@@ -22,6 +22,7 @@ class BookController extends Controller
         $n->numberPhone= $request->numberPhone;
         $n->name= $request->name;
         $n->location= $request->location;
+        $n->price= $request->price;
         $n->save();
         return redirect()->Route('home')->with('success',"Đặt khẩn cấp Thành công");
     }

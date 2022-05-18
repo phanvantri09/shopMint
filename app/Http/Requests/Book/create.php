@@ -30,6 +30,7 @@ class create extends FormRequest
             'id_distance'=>'required',
             'type_driver'=>'required',
             'content'=>'required',
+            'price'=>'required',
         ];
     }
     public function messages()
@@ -43,6 +44,7 @@ class create extends FormRequest
             'numberPhone.required'=>'không để trống',
             'numberPhone.min'=>'Phải đúng 10 số',
             'numberPhone.max'=>'Phải đúng 10 số',
+            'price.required'=>'Bạn phải chọn phương tiện và quản đường',
         ];
     }
 }

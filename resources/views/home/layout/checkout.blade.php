@@ -49,6 +49,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <br>
                     <table>
                         <thead>
                             <tr>
@@ -86,6 +87,57 @@
                             </tr>   
                             @endif 
                             @endforeach
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <br>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="shoping__product">Đơn khẩn cấp</th>
+                                <th>Loại phương tiện</th>
+
+                                <th>Loại xe</th>
+                                <th>Tổng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($data3 as $pro)
+                            <tr>
+                                <td class="shoping__cart__item">
+                                    <img src="img/cart/cart-1.jpg" alt="">
+                                    <h5>{{$pro->content}}</h5>
+                                </td>
+                                <td class="shoping__cart__price">
+                                    @if($pro->type_driver == 1)
+                                    Xe tải
+                                    @endif
+                                    @if($pro->type_driver == 2)
+                                    Xe 4 chổ
+                                    @endif
+                                    @if($pro->type_driver == 3)
+                                    Xe 7 chổ
+                                    @endif
+                                </td>
+                                <td class="shoping__cart__item">
+                                    @if($pro->type_driver == 1)
+                                    1 ->3km
+                                    @endif
+                                    @if($pro->type_driver == 2)
+                                    3 -> 5km
+                                    @endif
+                                    @if($pro->type_driver == 3)
+                                    5 -> 10km
+                                    @endif
+                                    @if($pro->type_driver == 4)
+                                    > 10km
+                                    @endif
+                                </td>
+                                <td class="shoping__cart__total">
+                                    {{$pro->price}}vnĐ
+                                </td>  
+                            </tr>   
+                           
                             @endforeach
                         </tbody>
                     </table>

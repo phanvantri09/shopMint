@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Models\Book;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Bill;
@@ -13,9 +14,10 @@ class CartController extends Controller
     public function checkout(){
          $id_user= Auth::User()->id;
          $products = Product::all();
-         $data1 = Cart::where('id_user','=',$id_user)->where('status','=',1)->get();
+         $data1 = Cart::where('id_user','=',$id_user)->where('status','=',1)->get();// đã đă
          $data2 = Cart::where('id_user','=',$id_user)->where('status','=',2)->get();
-         return view('home.layout.checkout', compact('data1','data2','products'));
+         $data3 = Book::where('id_user','=',$id_user)->get();
+         return view('home.layout.checkout', compact('data3','data1','data2','products'));
     }
     public function empty($id_user, $id_product){
         $tets =Cart::where('id_user','=',$id_user)->where('id_product','=',$id_product)->get();

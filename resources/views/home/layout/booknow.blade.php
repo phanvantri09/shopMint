@@ -44,17 +44,6 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="checkout__input">
-                                    <p>Loại phương tiện</p>
-                                    <input type="text" name="type_driver">
-                                    @error('type_driver')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="checkout__input">
                                     <p>Ghi rõ vấng đề của bạn:</p>
                                     <input type="text" name="content">
                                     @error('content')
@@ -64,18 +53,40 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-4">
                                 <div class="checkout__input">
-                                    <p>Số KM:</p>
-                                    <select name="id_distance" id="cars">
-                                        @foreach ($distance as $item)
-                                        <option value="{{$item->id}}">{{$item->km}}Km <--> {{$item->price}}$ </option>
-                                        @endforeach
+                                    <p>Quãng đường</p>
+                                    <select name="id_distance" id="selectionKm" onchange="myFunction()">
+                                        <option value="0">Chọn quãng đường</option>
+                                        <option value="1"> 1 -> 3km </option>
+                                        <option value="2"> 3 -> 5km </option>
+                                        <option value="3"> 5 -> 10km </option>
+                                        <option value="4"> > 10km </option>
                                       </select>
-                                    @error('content')
+                                    @error('id_distance')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                                 </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="checkout__input">
+                                    <p>Loại phương tiện:</p>
+                                    <select name="type_driver" id="selectiondriver" onchange="myFunction()">
+                                        <option value="0">Chọn loại xe</option>
+                                        <option value="1">Xe tải</option>
+                                        <option value="2">Xe 4 chổ</option>
+                                        <option value="3">Xe 7 chỗ</option>
+                                      </select>
+                                    @error('type_driver')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <p>Tổng tiền của bạn: </p><input style="border: none; color: red" type="text" id="price" name="price"> VNĐ
+                                @error('content')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             </div>
                         </div>
                         <div class="row">
@@ -84,12 +95,43 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </form>
         </div>
     </div>
 </section>
+<script>
+    function myFunction() {
+      var selectiondriver = document.getElementById("selectiondriver").value;
+      var selectionKm = document.getElementById("selectionKm").value;
+      var x =0;
+      if(selectiondriver == 1){
+        x = 1;
+      }
+      if(selectiondriver == 2){
+        x = 2;
+      }
+      if(selectiondriver == 3){
+        x = 3;
+      }
+      var y =0;
+      if(selectionKm == 1){
+        y = 50000;
+      }
+      if(selectionKm == 2){
+        y = 55000;
+      }
+      if(selectionKm == 3){ 
+        y = 60000;
+      }
+      if(selectionKm == 4){
+        y = 45000;
+      }
+      var price = selectiondriver +selectionKm;
+      //document.getElementById("price").innerHTML = x*y;
+      document.getElementById("price").value =x*y ;
+    }
+    </script>
 <form method="POST" action="" id="formDelete">
     @csrf @method('DELETE')
 </form>

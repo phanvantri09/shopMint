@@ -98,7 +98,12 @@
                 </li>
                 <li><a href="./blog.html">Blog</a></li>
                 <li><a href="./contact.html">Contact</a></li>
+                @auth
                 <li><a href="{{ route('booknow') }}">emergency rescue</a></li>
+                @else
+                <li><a href="{{ route('login') }}">emergency rescue</a></li>
+                @endauth
+                
 
             </ul>
         </nav>
@@ -181,8 +186,12 @@
                                 </ul>
                             </li>
                             <li><a href="{{ route('home') }}">Contact</a></li>
+                            @auth
                             <li><a href="{{ route('booknow') }}">Emergency Rescue</a></li>
-
+                            @else
+                            <li><a href="{{ route('login') }}">Emergency Rescue</a></li>
+                            @endauth
+                            
                         </ul>
                     </nav>
                 </div>
